@@ -11,6 +11,7 @@ function iniciar(){
 }
 
 function configurarJogadores(){
+	/*
 		let jogador = {
 			nome:'AAA',
 			cartas:[],
@@ -41,7 +42,7 @@ function configurarJogadores(){
 		};
 		jogadores.push(jogador);
 	
-	/*
+	*/
 	console.log('Configurando jogadores');
 	let qtd_jogadores = parseInt(window.prompt('Quantos jogadores?'));
 	if(!(qtd_jogadores > 0 && qtd_jogadores <= 10)){
@@ -59,7 +60,7 @@ function configurarJogadores(){
 		jogadores.push(jogador);
 		console.log('Criou jogador: '+nome);
 	}
-	*/
+	
 	
 }
 
@@ -176,7 +177,9 @@ function desenharTela(){
 function reportarPerdedor(){
 	if(acao == 1){
 		acao = 0;
-		pintarBackground(".nome-jogador","transparent");
+		
+		pintarBackground('.nome-jogador','white');
+		document.querySelectorAll('.nome-jogador')[rodada%(jogadores.length+1)].style.backgroundColor = '#ffca2c';
 		alert('Segue o jogo!');
 	}else{
 		acao = 1;
@@ -200,6 +203,9 @@ function acaoJogador(j){
 		indicarPerdedorRodada(j);
 		desenharTela();
 		acao = 0;
+		
+		pintarBackground('.nome-jogador','white');
+		document.querySelectorAll('.nome-jogador')[rodada%(jogadores.length)].style.backgroundColor = '#ffca2c';
 	}
 }
 
@@ -230,9 +236,18 @@ function porCartaNaMesa(j){
 }
 
 function mostrarCarta(carta){	
+	//play('beep');
+	rodada++;
+	pintarBackground('.nome-jogador','white');
+	document.querySelectorAll('.nome-jogador')[rodada%(jogadores.length)].style.backgroundColor = '#ffca2c';
+	
+	pintarBackground('.palavra','white');
+	document.querySelectorAll('.palavra')[rodada%5].style.backgroundColor = '#ffca2c';
+	//
+	
 	document.getElementById("carta_imagem").src='img/'+carta+'.JPG';
 	document.getElementById("carta").style.display='block';
-	play('beep');
+	
 	setTimeout(function(){
 		document.getElementById("carta").style.display='none';
 		document.getElementById("carta_imagem").src='';
