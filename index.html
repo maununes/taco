@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo Taco Gato Cabra Queijo Pizza</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="medium, confirm, coding, web development">
+    <meta name="description" content="Medium.com styled confirm dialog.">
+    <meta http-equiv="Cache-Control" content="max-age=300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+    body {
+      font-family: 'Bitter', serif;
+      font-size: 25px;
+      color: #444;
+      text-align:center;
+    }
+    button {font-size: 25px;width:230px;}
+    table {border: 1px solid;}
+    td {border: 1px solid;padding:10px;}
+    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <header>
+        <table style="margin:0 auto; text-align:center;width:100%;" class="table">
+            <thead class="table-light">
+                <tr>
+                    <th class="palavra">Taco</th>
+                    <th class="palavra">Gato</th>
+                    <th class="palavra">Cabra</th>
+                    <th class="palavra">Queijo</th>
+                    <th class="palavra">Pizza</th>
+                </tr>
+            </thead>
+        </table>
+    </header>
+    <section class="content" id="tela" style="font-size:25px;text-align:center;padding:0px;">
+    </section>
+    <div id="carta" style="width:100%;height:100%;position:absolute;text-align:center;top:100px;display:none;">
+        <img width="350" id="carta_imagem" src="" style="border-radius:10px;box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);">
+    </div>
+    
+    <br><br>
+    <hr>
+    <div style="margin:0 auto;text-align:center;" >
+    <button class="btn btn-light" onclick="this.style.display = 'none';document.querySelector('#regras').style.display = 'block';">Ver Regras</button>
+    </div>
+    <div style="padding:10px;display:none;" id="regras" >
+        <h4>Regras</h4>
+            Ao iniciar todos os jogadores recebem um baralho de cartas.
+            <br>
+            Cada jogador clica no seu nome e fala em voz alta uma palavra da sequencia: Taco Gato Cabra Queijo Pizza.
+            <br>
+            Se a imagem for diferente da palavra falada, a carta vai pro monte.
+            <br>
+            Se aparecer a mesma imagem que o jogador falou, todos colocam as mãos sobrepostas no centro da mesa. O último a por a mão, perde e recebe as cartas do monte.
+            <br>
+            Quem ficar com menos cartas no final vence e acumula 1 ponto.
+            
+        <br><br>
+    
+        <h4>Cartas:</h4>
+        <br>
+        <img width="170" id="carta_imagem" src="img/taco.JPG"    style="border-radius:10px">
+        <img width="170" id="carta_imagem" src="img/cabra.JPG"   style="border-radius:10px">
+        <br><br>
+        <img width="170" id="carta_imagem" src="img/gato.JPG"    style="border-radius:10px">
+        <img width="170" id="carta_imagem" src="img/queijo.JPG"  style="border-radius:10px">
+        <br><br>
+        <img width="170" id="carta_imagem" src="img/pizza.JPG"   style="border-radius:10px">
+        <br><br>
+        <h4>Cartas Especiais:</h4>
+        <br>
+        <img width="300" id="carta_imagem" src="img/marmota.JPG" style="border-radius:10px"><br>
+        <b>Marmota:</b> bata na mesa com a mão fechada fechada, depois coloque a mão no centro da mesa
+        <br><br>
+        <img width="300" id="carta_imagem" src="img/gorila.JPG"  style="border-radius:10px"><br>
+        <b>Gorila:</b> bata com a mão no peito, depois coloque a mão no centro da mesa
+        <br><br>
+        <img width="300" id="carta_imagem" src="img/baleia.JPG"  style="border-radius:10px"><br>
+        <b>Baleia:</b> faça um cone com a mão acima da cabeça, depois coloque a mão no centro da mesa
+        <br><br>
+        <img width="300" id="carta_imagem" src="img/rena.JPG"    style="border-radius:10px"><br>
+        <b>Rena:</b> faça com a mão acima da cabeça, os chifres da rena, depois coloque a mão no centro da mesa
+        <br><br><br>
+    </div>
+
+    <script src="js/jogo.js"></script> 
+</body>
+</html>
