@@ -4,7 +4,6 @@ let vez_jogador=0;
 let ultimoVencedor = -1;
 let rodada = -1;
 let palavras = ['taco','gato','cabra','queijo','pizza'];
-let palavraAtual = '';
 
 function iniciar(){
 	configurarJogadores();
@@ -83,8 +82,6 @@ function embaralhar(array) {
 }
 
 function distribuirCartas(){
-	palavraAtual = '';
-	
 	console.log('Distribuindo cartas');
 	
 	for(j=0;j<jogadores.length;j++){
@@ -144,11 +141,10 @@ function distribuirCartas(){
 	monte_cartas = [];
 	
 	desenharTela();
-	play('start');
 	
 	rodada = 0;
-	pintarBackground('.palavra','white');
-	document.querySelectorAll('.palavra')[rodada%5].style.backgroundColor = '#ffca2c';
+	//pintarBackground('.palavra','white');
+	//document.querySelectorAll('.palavra')[rodada%5].style.backgroundColor = '#ffca2c';
 }
 
 let acoes = ['dar carta','reportar'];
@@ -172,7 +168,7 @@ function desenharTela(){
 		viewHTML = viewHTML +'</tr>';
 	}
 	viewHTML = viewHTML +'</tbody></table><br>';
-	viewHTML = viewHTML +'<button onclick="reportarPerdedor();play(\'beep\')" class="btn btn-warning"> Quem perdeu? </button> <br>';
+	viewHTML = viewHTML +'<button onclick="reportarPerdedor();play(\'errou\')" class="btn btn-warning"> Quem perdeu? </button> <br>';
 	console.log(viewHTML);
 	tela.innerHTML = viewHTML;
 }
@@ -180,7 +176,6 @@ function desenharTela(){
 function reportarPerdedor(){
 	if(acao == 1){
 		acao = 0;
-		play('start');
 		pintarBackground(".nome-jogador","transparent");
 		alert('Segue o jogo!');
 	}else{
@@ -219,8 +214,8 @@ function temVencedor(){
 }
 
 function encerrarJogo(){
-	play('win');
 	alert('Vencedor: '+ jogadores[ultimoVencedor].nome);
+	play('win');
 	jogadores[ultimoVencedor].vitorias = jogadores[ultimoVencedor].vitorias+1;
 	distribuirCartas();
 }
@@ -234,10 +229,7 @@ function porCartaNaMesa(j){
 	mostrarCarta(carta);
 }
 
-function mostrarCarta(carta){
-	rodada = rodada+1;
-	palavraAtual = palavras[rodada%4];
-	
+function mostrarCarta(carta){	
 	document.getElementById("carta_imagem").src='img/'+carta+'.JPG';
 	document.getElementById("carta").style.display='block';
 	play('beep');

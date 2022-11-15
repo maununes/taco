@@ -17,7 +17,7 @@
       color: #444;
       text-align:center;
     }
-    button {font-size: 25px;width:230px;}
+    .btn-jogador {font-size: 25px;width:230px;}
     table {border: 1px solid;}
     td {border: 1px solid;padding:10px;}
     </style>
@@ -39,9 +39,13 @@
                 </tr>
             </thead>
         </table>
-        <div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-sm-6">
             <button class="btn btn-sm ligth" id="btnGravar"><i class="fas fa-microphone"></i> Escutar</button>
+            </div>
+            <div class="col-sm-6">
             <button class="btn btn-sm ligth" id="btnParar" disabled><i class="fas fa-microphone-slash"></i> Parar</button>
+            </div>
         </div>
     </header>
     <section class="content" id="tela" style="font-size:25px;text-align:center;padding:0px;">
