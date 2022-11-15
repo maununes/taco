@@ -1,10 +1,10 @@
-
-
 let jogadores = [];
 let monte_cartas = [];
 let vez_jogador=0;
 let ultimoVencedor = -1;
-let rodada = 1;
+let rodada = -1;
+let palavras = ['taco','gato','cabra','queijo','pizza'];
+let palavraAtual = '';
 
 function iniciar(){
 	configurarJogadores();
@@ -12,8 +12,6 @@ function iniciar(){
 }
 
 function configurarJogadores(){
-	
-	
 		let jogador = {
 			nome:'AAA',
 			cartas:[],
@@ -85,7 +83,8 @@ function embaralhar(array) {
 }
 
 function distribuirCartas(){
-	rodada = 1;
+	palavraAtual = '';
+	
 	console.log('Distribuindo cartas');
 	
 	for(j=0;j<jogadores.length;j++){
@@ -146,6 +145,10 @@ function distribuirCartas(){
 	
 	desenharTela();
 	play('start');
+	
+	rodada = 0;
+	pintarBackground('.palavra','white');
+	document.querySelectorAll('.palavra')[rodada%5].style.backgroundColor = '#ffca2c';
 }
 
 let acoes = ['dar carta','reportar'];
@@ -164,7 +167,7 @@ function desenharTela(){
 	for(j=0;j<jogadores.length;j++){
 		viewHTML = viewHTML +'<tr>';
 		viewHTML = viewHTML +'<td >'+jogadores[j].vitorias+'</td>';
-		viewHTML = viewHTML +'<td class="nome-jogador"><button class="btn btn-light" onclick="acaoJogador('+j+')">'+jogadores[j].nome+'</button> </td>';
+		viewHTML = viewHTML +'<td class="nome-jogador"><button class="btn btn-light btn-jogador" onclick="acaoJogador('+j+')">'+jogadores[j].nome+'</button> </td>';
 		viewHTML = viewHTML +'<td>'+jogadores[j].cartas.length+'</td>';
 		viewHTML = viewHTML +'</tr>';
 	}
@@ -232,6 +235,9 @@ function porCartaNaMesa(j){
 }
 
 function mostrarCarta(carta){
+	rodada = rodada+1;
+	palavraAtual = palavras[rodada%4];
+	
 	document.getElementById("carta_imagem").src='img/'+carta+'.JPG';
 	document.getElementById("carta").style.display='block';
 	play('beep');
@@ -260,5 +266,6 @@ function pintarBackground(el,color){
         x[i].style.backgroundColor = color;
     }
 }
+
 
 iniciar();
